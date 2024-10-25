@@ -47,6 +47,14 @@ function resetForm() {
 
 }
 
+function displayError(element, message) {
+  const errorElement = element.parentElement.querySelector(".error-message");
+  if (errorElement) {
+    errorElement.textContent = message;
+  }
+}
+
+
 const form = document.querySelector('form[name="reserve"]');
 const successMessage = document.getElementById("success-message");
 form.addEventListener("submit", function (event) {
@@ -79,7 +87,8 @@ form.addEventListener("submit", function (event) {
 
 
   const birthdate = form.querySelector("#birthdate");
-  if (!birthdate.validity.valid) {
+ 
+  if (!birthdate.value) {
     displayError(birthdate, "Veuillez entrer une date de naissance valide.");
     isValid = false;
   }
@@ -121,9 +130,3 @@ form.addEventListener("submit", function (event) {
   }
 });
 
-function displayError(element, message) {
-  const errorElement = element.parentElement.querySelector(".error-message");
-  if (errorElement) {
-    errorElement.textContent = message;
-  }
-}
