@@ -95,7 +95,7 @@ form.addEventListener("submit", function (event) {
 
 
   const quantity = form.querySelector("#quantity");
-  if (!quantity.validity.valid) {
+  if (!quantity.value) {
     displayError(quantity, "Veuillez entrer un nombre valide de tournois.");
     isValid = false;
   }
